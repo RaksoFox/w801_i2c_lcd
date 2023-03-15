@@ -39,22 +39,7 @@ void i2c_lcd_task(void *data)
 
 	for (;;)
 	{
-		tls_os_time_delay(HZ * 2); // One second delay
-		i2c_lcd_clear(I2C_LCD_ADDR);
-		uint8_t customChar[8] = {
-			0b00100,
-			0b01010,
-			0b00100,
-			0b11111,
-			0b00100,
-			0b00100,
-			0b01010,
-			0b10001};
-
-		i2c_lcd_create_custom_char(I2C_LCD_ADDR, 0, customChar);
-		i2c_lcd_set_cursor(I2C_LCD_ADDR, 0, 0);
-		
-		i2c_lcd_write_custom_char(I2C_LCD_ADDR, 0);
+		// tls_os_time_delay(HZ * 2); // One second delay
 	}
 }
 
