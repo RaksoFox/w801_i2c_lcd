@@ -13,10 +13,10 @@
 #define LCD_CG_RAM 0x40
 #define LCD_BACKLIGHT 0x08
 #define LCD_NOBACKLIGHT 0x00
+#define LCD_SCROLL_RIGHT 0x1E
+#define LCD_SCROLL_LEFT 0x18
 
-#define EN_BIT 0b00000100 // Enable bit
-#define RW_BIT 0b00000010 // Read/Write bit
-#define RS_BIT 0b00000001 // Register select bit
+#define EN_BIT 0b00000100
 
 uint8_t _cols;
 uint8_t _lines;
@@ -32,5 +32,6 @@ void i2c_lcd_display(uint8_t lcd_addr, bool on);
 void i2c_lcd_clear(uint8_t lcd_addr);
 void i2c_lcd_create_custom_char(uint8_t lcd_addr, uint8_t location, uint8_t *charmap);
 void i2c_lcd_write_custom_char(uint8_t lcd_addr, uint8_t location);
+void i2c_lcd_scroll(uint8_t lcd_addr, uint8_t direction, uint8_t scroll_size);
 
 #endif

@@ -39,7 +39,8 @@ void i2c_lcd_task(void *data)
 
 	for (;;)
 	{
-		// tls_os_time_delay(HZ * 2); // One second delay
+		tls_os_time_delay(HZ * 2); // Two second delay
+		i2c_lcd_scroll(I2C_LCD_ADDR, 1, 1);
 	}
 }
 

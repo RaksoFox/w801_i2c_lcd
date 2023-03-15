@@ -121,6 +121,25 @@ void i2c_lcd_write_custom_char(uint8_t lcd_addr, uint8_t location)
     i2c_lcd_write(lcd_addr, (uint8_t)location);
 }
 
+void i2c_lcd_scroll(uint8_t lcd_addr, uint8_t direction, uint8_t scroll_size)
+{
+    uint8_t i = 0;
+    if (direction == 1)
+    {
+        for (i = 0; i < scroll_size; i++)
+        {
+            i2c_lcd_command(lcd_addr, LCD_SCROLL_RIGHT);
+        }
+    }
+    else
+    {
+        for (i = 0; i < scroll_size; i++)
+        {
+            i2c_lcd_command(lcd_addr, LCD_SCROLL_LEFT);
+        }
+    }
+}
+
 void i2c_lcd_init(uint8_t lcd_addr, uint8_t cols, uint8_t lines)
 {
     _cols = cols;
