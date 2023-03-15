@@ -34,9 +34,9 @@ void i2c_lcd_task(void *data)
 	i2c_lcd_write(I2C_LCD_ADDR, 'l');
 	i2c_lcd_write(I2C_LCD_ADDR, 'o');
 	i2c_lcd_set_cursor(I2C_LCD_ADDR, 1, 1);
-	char testString[] = "World";
+	char testString[] = "World ";
 	i2c_lcd_write_string(I2C_LCD_ADDR, testString);
-	i2c_lcd_cursor_mode(I2C_LCD_ADDR, 2);
+	i2c_lcd_cursor_mode(I2C_LCD_ADDR, 3);
 
 	for (;;)
 	{
