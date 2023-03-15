@@ -33,5 +33,7 @@ void i2c_lcd_clear(uint8_t lcd_addr);
 void i2c_lcd_create_custom_char(uint8_t lcd_addr, uint8_t location, uint8_t *charmap);
 void i2c_lcd_write_custom_char(uint8_t lcd_addr, uint8_t location);
 void i2c_lcd_scroll(uint8_t lcd_addr, uint8_t direction, uint8_t scroll_size);
+void i2c_lcd_entry_mode(uint8_t lcd_addr, uint8_t mode);
+void i2c_lcd_cursor_mode(uint8_t lcd_addr, uint8_t mode);
 
 #endif
