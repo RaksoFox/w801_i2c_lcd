@@ -8,8 +8,8 @@
 void low_write_byte(uint8_t lcd_addr, uint8_t data)
 {
 	// printf("================== Write Byte ==================\n");
-	// printf("data = 0x%.2x \n", data | _backlightval);
-	tls_i2c_write_byte(data | _backlightval, 0); // XXXX-BXXX
+	// printf("data = 0x%.2x \n", data | _backlight);
+	tls_i2c_write_byte(data | _backlight, 0); // XXXX-BXXX
 }
 
 void write4bits(uint8_t lcd_addr, uint8_t data)
@@ -68,7 +68,7 @@ void i2c_lcd_write_string(uint8_t lcd_addr, char *str)
 
 void i2c_lcd_backlight(uint8_t lcd_addr, bool on)
 {
-	_backlightval = on ? LCD_BACKLIGHT : LCD_NOBACKLIGHT;
+	_backlight = on ? LCD_BACKLIGHT : LCD_NOBACKLIGHT;
 	i2c_lcd_command(lcd_addr, 0);
 }
 
@@ -142,21 +142,21 @@ void i2c_lcd_scroll(uint8_t lcd_addr, uint8_t direction, uint8_t scroll_size)
 
 void i2c_lcd_entry_mode(uint8_t lcd_addr, uint8_t mode)
 {
-	uint8_t _LCDEntryModes[4] = {0x04, 0x05, 0x06, 0x07}; //
+	uint8_t lcd_entry_modes[4] = {0x04, 0x05, 0x06, 0x07}; //
 
 	if (mode > 3)
 		return;
-	i2c_lcd_command(lcd_addr, _LCDEntryModes[mode]);
+	i2c_lcd_command(lcd_addr, lcd_entry_modes[mode]);
 	tls_os_time_delay(HZ * 0.00005);
 }
 
 void i2c_lcd_cursor_mode(uint8_t lcd_addr, uint8_t mode)
 {
-	uint8_t _LCDCursorModes[4] = {0x0C, 0x0D, 0x0E, 0x0F}; // None, Block, Underline, Block + Underline
+	uint8_t lcd_cursor_modes[4] = {0x0C, 0x0D, 0x0E, 0x0F}; // None, Block, Underline, Block + Underline
 
 	if (mode > 3)
 		return;
-	i2c_lcd_command(lcd_addr, _LCDCursorModes[mode]);
+	i2c_lcd_command(lcd_addr, lcd_cursor_modes[mode]);
 	tls_os_time_delay(HZ * 0.00005);
 }
 

@@ -28,20 +28,26 @@ void i2c_lcd_task(void *data)
 	i2c_lcd_init(I2C_LCD_ADDR, 16, 2);
 	i2c_lcd_backlight(I2C_LCD_ADDR, true);
 
-	i2c_lcd_write(I2C_LCD_ADDR, 'H');
-	i2c_lcd_write(I2C_LCD_ADDR, 'e');
-	i2c_lcd_write(I2C_LCD_ADDR, 'l');
-	i2c_lcd_write(I2C_LCD_ADDR, 'l');
-	i2c_lcd_write(I2C_LCD_ADDR, 'o');
+	i2c_lcd_write(I2C_LCD_ADDR, 'K');
+	i2c_lcd_write(I2C_LCD_ADDR, 'Y');
+	i2c_lcd_write(I2C_LCD_ADDR, 'S');
+	i2c_lcd_write(I2C_LCD_ADDR, ' ');
+	i2c_lcd_write(I2C_LCD_ADDR, '-');
+	char string1[] = " Keep Your-";
+	i2c_lcd_write_string(I2C_LCD_ADDR, string1);
+	char string2[] = " self Safe";
 	i2c_lcd_set_cursor(I2C_LCD_ADDR, 1, 1);
-	char testString[] = "World ";
-	i2c_lcd_write_string(I2C_LCD_ADDR, testString);
-	i2c_lcd_cursor_mode(I2C_LCD_ADDR, 3);
+	i2c_lcd_write_string(I2C_LCD_ADDR, string2);
+	// i2c_lcd_cursor_mode(I2C_LCD_ADDR, 3);
 
 	for (;;)
 	{
-		tls_os_time_delay(HZ * 5); // Two second delay
-		i2c_lcd_scroll(I2C_LCD_ADDR, 1, 1);
+		for (size_t i = 0; i < 16; i++)
+		{
+			tls_os_time_delay(HZ * 1); // Two second delay
+			i2c_lcd_scroll(I2C_LCD_ADDR, 1, 1);
+		}
+		i2c_lcd_scroll(I2C_LCD_ADDR, 0, 32);
 	}
 }
 

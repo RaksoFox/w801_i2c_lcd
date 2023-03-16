@@ -20,7 +20,7 @@
 
 uint8_t _cols;
 uint8_t _lines;
-uint8_t _backlightval;
+uint8_t _backlight;
 
 void i2c_lcd_init(uint8_t lcd_addr, uint8_t cols, uint8_t lines);
 void i2c_lcd_write_char(uint8_t lcd_addr, unsigned char value);
